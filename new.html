@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Jet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: #220e47;
+    color: white;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(135deg, #220e47 0%, #3a1478 100%);
+}
+
+.container {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 600px;
+}
+
+.content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #ff00e0, #00e0ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(255, 0, 224, 0.5);
+}
+
+.botText {
+    font-size: 1.5rem;
+    color: #00e0ff;
+    text-shadow: 0 0 5px rgba(0, 224, 255, 0.5);
+}
+
+.imagePlac {
+    border-radius: 20px;
+    margin: 2rem auto;
+    max-width: 300px;
+    height: auto;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.info {
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    color: #e0e0e0;
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.button {
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    background: linear-gradient(45deg, #ff00e0, #00e0ff);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(0, 224, 255, 0.4);
+}
+
+.button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 0, 224, 0.6);
+}
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.multiplierCircle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 10px solid #4CAF50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: #4CAF50;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+    }
+}
+
+.letsHack {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: whitesmoke;
+}
+
+.loadingText {
+    font-size: 1.5rem;
+    color: #4CAF50;
+}
+
+.redMultiplier {
+    color: #ff4444;
+}
+
+.dots {
+    animation: blink 1s infinite;
+}
+
+.subscribeText {
+    color: #ff4444;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.redMultiplier {
+    color: #ff4444;
+    text-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
+}
+
+.backButton {
+    margin-top: 2rem;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    background: linear-gradient(45deg, #3a1478, #220e47);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(58, 20, 120, 0.4);
+}
+
+.backButton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(34, 14, 71, 0.6);
+}
+
+@keyframes blink {
+    0% { opacity: 0.2; }
+    50% { opacity: 1; }
+    100% { opacity: 0.2; }
+}
+
+.subscribeText {
+    color: #ff4444;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    animation: fadeIn 2s;
+    text-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
+}
+
+.plans {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.plan {
+    padding: 2rem;
+    background: linear-gradient(45deg, rgba(255, 0, 224, 0.1), rgba(0, 224, 255, 0.1));
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.plan:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.5);
+}
+
+.paymentInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.paymentTitle {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    background: linear-gradient(45deg, #ff00e0, #00e0ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(255, 0, 224, 0.5);
+}
+
+.cryptoAddress {
+    background: linear-gradient(45deg, rgba(255, 0, 224, 0.1), rgba(0, 224, 255, 0.1));
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin: 1.5rem 0;
+    word-break: break-all;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.cryptoAddress:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.5);
+}
+
+.copyIcon {
+    margin-left: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.confirmButton {
+    margin-top: 2rem;
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    background: linear-gradient(45deg, #ff00e0, #00e0ff);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(255, 0, 224, 0.4);
+}
+
+.confirmButton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 224, 255, 0.6);
+}
+
+.loadingOverlay, .errorOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(34, 14, 71, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+.errorText {
+    font-size: 2rem;
+    color: #ff4444;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 1rem;
+        width: 95%;
+    }
+
+    .content h1 {
+        font-size: 2.5rem;
+    }
+
+    .botText {
+        font-size: 1.2rem;
+    }
+
+    .imagePlac {
+        max-width: 80%;
+    }
+
+    .info {
+        font-size: 1rem;
+    }
+
+    .button {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+    }
+
+    .multiplierCircle {
+        width: 150px;
+        height: 150px;
+        font-size: 2rem;
+        border-width: 8px;
+    }
+
+    .letsHack {
+        font-size: 1.5rem;
+    }
+
+    .loadingText {
+        font-size: 1.2rem;
+    }
+
+    .subscribeText {
+        font-size: 1.2rem;
+    }
+
+    .paymentTitle {
+        font-size: 2rem;
+    }
+
+    .cryptoAddress {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .confirmButton {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+    }
+
+    .errorText {
+        font-size: 1.5rem;
+    }
+}
+</style>
+</head>
+<body>
+    <div id="app" class="container">
+        <!-- Content will be dynamically inserted here -->
+    </div>
+
+    <script>
+        const app = {
+            view: 'container',
+            multiplier: 1.00,
+            showSubscribe: false,
+            showLoading: false,
+            selectedPlan: '',
+            paymentAmount: 0,
+            showPaymentError: false,
+
+            init() {
+                this.render();
+            },
+
+            render() {
+                const appElement = document.getElementById('app');
+                appElement.innerHTML = '';
+
+                switch (this.view) {
+                    case 'container':
+                        appElement.appendChild(this.renderContainer());
+                        break;
+                    case 'loading':
+                        appElement.appendChild(this.renderLoading());
+                        break;
+                    case 'plans':
+                        appElement.appendChild(this.renderPlans());
+                        break;
+                    case 'payment':
+                        appElement.appendChild(this.renderPayment());
+                        break;
+                }
+            },
+
+            renderContainer() {
+                const container = document.createElement('div');
+                container.className = 'content';
+                container.innerHTML = `
+                    <h1>
+                        <span>Hack Prediction</span>
+                        <span class="botText">Bot</span>
+                    </h1>
+                    <img src="lucky.jpg" alt="Lucky Jet" class="imagePlac">
+                    <p class="info">Get your lucky signals and subscribe for more information!</p>
+                    <div class="buttonContainer">
+                        <button class="button" id="getSignalBtn">Get Signal</button>
+                        <button class="button" id="showPlansBtn">Subscribe</button>
+                    </div>
+                `;
+                container.querySelector('#getSignalBtn').addEventListener('click', () => this.getSignal());
+                container.querySelector('#showPlansBtn').addEventListener('click', () => this.showPlans());
+                return container;
+            },
+
+            renderLoading() {
+                const loading = document.createElement('div');
+                loading.className = 'loading';
+                loading.innerHTML = `
+                    <h2 class="letsHack">Let's Hack</h2>
+                    <div class="multiplierCircle">
+                        ${this.showLoading ?
+                            `<span class="loadingText">Loading<span class="dots">...</span></span>` :
+                            `<span class="${this.multiplier === 1.00 && this.showSubscribe ? 'redMultiplier' : ''}">
+                                x${this.multiplier.toFixed(2)}
+                            </span>`
+                        }
+                    </div>
+                    ${this.showSubscribe ?
+                        `<p class="subscribeText">
+                            Get a subscribe<span class="dots">...</span>
+                        </p>
+                        <button class="backButton" id="backBtn">Back to Menu</button>` :
+                        ''
+                    }
+                `;
+                if (this.showSubscribe) {
+                    loading.querySelector('#backBtn').addEventListener('click', () => this.goBack());
+                }
+                return loading;
+            },
+
+            renderPlans() {
+                const plans = document.createElement('div');
+                plans.className = 'plans';
+                plans.innerHTML = `
+                    <h2>Select a Plan</h2>
+                    <div class="plan" id="weeklyPlan">
+                        <h3>Weekly Plan for $5</h3>
+                        <p>Get access to premium signals for one week</p>
+                    </div>
+                    <div class="plan" id="monthlyPlan">
+                        <h3>Monthly Plan for $20</h3>
+                        <p>Get access to premium signals for one month</p>
+                    </div>
+                    <button class="backButton" id="backBtn">Back to Menu</button>
+                `;
+                plans.querySelector('#weeklyPlan').addEventListener('click', () => this.selectPlan('weekly'));
+                plans.querySelector('#monthlyPlan').addEventListener('click', () => this.selectPlan('monthly'));
+                plans.querySelector('#backBtn').addEventListener('click', () => this.goBack());
+                return plans;
+            },
+
+            renderPayment() {
+                const payment = document.createElement('div');
+                payment.className = 'paymentInfo';
+                if (this.showLoading) {
+                    payment.innerHTML = `
+                        <div class="loadingOverlay">
+                            <span class="loadingText">Loading<span class="dots">...</span></span>
+                        </div>
+                    `;
+                } else if (this.showPaymentError) {
+                    payment.innerHTML = `
+                        <div class="errorOverlay">
+                            <p class="errorText">You did not make the payment! Please try again.</p>
+                        </div>
+                    `;
+                } else {
+                    payment.innerHTML = `
+                        <h1 class="paymentTitle">Payment Information</h1>
+                        <p>Please send the payment to the following USDT (TRC20) address:</p>
+                        <div class="cryptoAddress" id="cryptoAddress">
+                            TPforvRe4vhsbMiRsoCTzXGgmMvXxoGph6
+                            <span class="copyIcon">📋</span>
+                        </div>
+                        <p>Please send $${this.paymentAmount} worth of USDT (TRC20) to the address above.</p>
+                        <button class="confirmButton" id="confirmBtn">Confirm Payment</button>
+                        <button class="backButton" id="backBtn">Back to Menu</button>
+                    `;
+                    payment.querySelector('#cryptoAddress').addEventListener('click', () => this.copyToClipboard('TPforvRe4vhsbMiRsoCTzXGgmMvXxoGph6'));
+                    payment.querySelector('#confirmBtn').addEventListener('click', () => this.confirmPayment());
+                    payment.querySelector('#backBtn').addEventListener('click', () => this.goBack());
+                }
+                return payment;
+            },
+
+            getSignal() {
+                this.view = 'loading';
+                this.showSubscribe = false;
+                this.showLoading = false;
+                this.multiplier = 1.00;
+                this.render();
+
+                let currentMultiplier = 1.00;
+                const interval = setInterval(() => {
+                    currentMultiplier += 0.01;
+                    this.multiplier = parseFloat(currentMultiplier.toFixed(2));
+                    this.render();
+
+                    if (currentMultiplier >= 1.30) {
+                        clearInterval(interval);
+                        this.showLoading = true;
+                        this.render();
+                        setTimeout(() => {
+                            this.showLoading = false;
+                            this.multiplier = 1.00;
+                            this.showSubscribe = true;
+                            this.render();
+                        }, 2000);
+                    }
+                }, 50);
+            },
+
+            showPlans() {
+                this.view = 'plans';
+                this.render();
+            },
+
+            copyToClipboard(text) {
+                navigator.clipboard.writeText(text).then(() => {
+                    alert('Copied to clipboard!');
+                });
+            },
+
+            goBack() {
+                this.view = 'container';
+                this.showSubscribe = false;
+                this.showLoading = false;
+                this.multiplier = 1.00;
+                this.showPaymentError = false;
+                this.render();
+            },
+
+            selectPlan(plan) {
+                this.selectedPlan = plan;
+                this.paymentAmount = plan === 'weekly' ? 5 : 20;
+                this.view = 'payment';
+                this.render();
+            },
+
+            confirmPayment() {
+                this.showLoading = true;
+                this.render();
+                setTimeout(() => {
+                    this.showLoading = false;
+                    this.showPaymentError = true;
+                    this.render();
+                    setTimeout(() => {
+                        this.showPaymentError = false;
+                        this.goBack();
+                    }, 3000);
+                }, 3000);
+            }
+        };
+
+        app.init();
+    </script>
+</body>
+</html>
